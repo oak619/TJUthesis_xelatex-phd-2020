@@ -2,8 +2,8 @@
 \ProvidesFile{XDUthesis.def}[2015/01/01 XDU, Thesis document class, version 0.1.0]
 
 % General
-\def\XDU@label@university{西安电子科技大学}
-\def\XDU@elabel@university{XIDIAN UNIVERSITY}
+\def\XDU@label@university{天津大学}
+\def\XDU@elabel@university{Tianjin University}
 
 % 封面
 \def\XDU@label@cover@UDC{学校代码\hspace*{0.9em}}

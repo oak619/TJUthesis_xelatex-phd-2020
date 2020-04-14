@@ -222,11 +222,12 @@
 \def\XDU@hdr@thesistitle
   {\XDU@label@university\XDU@value@degreemark\XDU@value@thesis}
 
-%% the double line under header
+%% the double line under header，页眉下划线
 \renewcommand{\headrulewidth}{0.5pt}
 \newcommand{\makeheadrule}{%
-\makebox[0pt][l]{\rule[9pt]{\headwidth}{0.5pt}}%
-\rule[8pt]{\headwidth}{0.5pt}}
+\makebox[0pt][l]{\rule[9pt]{\headwidth}{0.5pt}}} %修改页眉又下划线，为单下划线
+% \makebox[0pt][l]{\rule[9pt]{\headwidth}{0.5pt}}%
+% \rule[8pt]{\headwidth}{0.5pt}}
 \renewcommand{\headrule}{%
 {\if@fancyplain\let\headrulewidth\plainheadrulewidth\fi
 \makeheadrule}}
@@ -337,6 +338,7 @@
 %% ql first
 \DeclareRobustCommand{\XDU@make@cover}
 {{\setlength{\parindent}{0pt}\thispagestyle{empty}%
+    % \normalfont\XDU@font@st\XDU@font@zihao{2}\setlength{\baselineskip}{17pt}%
     \normalfont\XDU@font@st\XDU@font@zihao{2}\setlength{\baselineskip}{30pt}%
     \makebox[\textwidth]{\rule{0pt}{12cm}}
     \rule[-3.2cm]{0pt}{3.2cm}\parbox[t]{\textwidth}{%
