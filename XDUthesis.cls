@@ -14,8 +14,8 @@
 
 %% print version or electronic version
 \newif\ifXDU@Option@PrintVersion \XDU@Option@PrintVersiontrue
-\DeclareOption{pversion}{\XDU@Option@PrintVersiontrue}
-\DeclareOption{eversion}{\XDU@Option@PrintVersionfalse}
+\DeclareOption{eversion}{\XDU@Option@PrintVersiontrue}
+\DeclareOption{pversion}{\XDU@Option@PrintVersionfalse}
 
 %% info
 \newif\ifXDU@Option@info \XDU@Option@infotrue
@@ -77,6 +77,9 @@
   \endgroup
 }
 
+%使得参考文献的引用变为右上角小标
+% \newcommand{\upcite}[1]
+% {\textsuperscript{\textsuperscript{\cite{#1}}}}
 
 %% hyperref
 \RequirePackage[pdfencoding=auto]{hyperref}
@@ -156,7 +159,7 @@
 \DeclareRobustCommand*{\XDU@bold}{\bfseries}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%    font
+%%    font 字体设置
 \RequirePackage{amsmath}
 \RequirePackage{amssymb}
 \RequirePackage{mathrsfs}
@@ -171,9 +174,9 @@
 \setmathsfont{Times New Roman}
 %\usepackage{xeCJK}
 % 设置文档正文字体为宋体
-%\setCJKmainfont[BoldFont=SimHei]{SimSun}
-%\setCJKmonofont{SimSun}     % 设置缺省中文字体
-%\setCJKfamilyfont{song}[AutoFakeBold=1]{SimSun}                             %宋体 song  
+\setCJKmainfont[BoldFont=SimHei]{SimSun}
+\setCJKmonofont{SimSun}     % 设置缺省中文字体
+\setCJKfamilyfont{song}[AutoFakeBold=1]{SimSun}                             %宋体 song  
 \setCJKfamilyfont{song}[AutoFakeBold=true]{SimSun}                             %宋体 song  
 \newcommand{\song}{\CJKfamily{song}}
 %\setCJKfamilyfont{hei}{SimHei}                              %黑体  hei 
@@ -192,15 +195,20 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%    document setting
-
 %% 参考网址：https://en.wikibooks.org/wiki/LaTeX/Page_Layout
 %% page ql head
-\setlength{\textwidth}{\paperwidth-5.5cm}% 2.5+2.5+0.5
+%页边距
+\setlength{\textwidth}{\paperwidth-6.34cm}% 3.57+2.77
 \setlength{\textheight}{\paperheight-3cm-3cm}%
 \setlength\marginparwidth{0cm}%
 \setlength\marginparsep{0cm}%
-\setlength{\oddsidemargin}{3cm-1in-\hoffset}% hoffset 正文的水平偏移
-\setlength{\evensidemargin}{2.5cm-1in-\hoffset}%
+\ifXDU@Option@PrintVersion
+\setlength{\oddsidemargin}{3.17cm-1in-\hoffset}
+\setlength{\evensidemargin}{3.17cm-1in-\hoffset}
+\else
+\setlength{\oddsidemargin}{3.57cm-1in-\hoffset}
+\setlength{\evensidemargin}{2.77cm-1in-\hoffset}
+\fi
 %\setlength{\headheight}{31pt}%
 %\setlength{\headheight}{10.5pt}%
 \setlength{\headheight}{31pt}%
@@ -334,28 +342,42 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%    chinese  cover
+%%    chinese  cover 封面
 %% ql first
 \DeclareRobustCommand{\XDU@make@cover}
-{{\setlength{\parindent}{0pt}\thispagestyle{empty}%
-    % \normalfont\XDU@font@st\XDU@font@zihao{2}\setlength{\baselineskip}{17pt}%
+{%天津大学博士学位论文字样
+  {\setlength{\parindent}{0pt}\thispagestyle{empty}%
+    \begin{center}
+     \fontsize{17pt}{\baselineskip}\selectfont  \XDU@hdr@thesistitle 
+    \end{center}
+    %空行
     \normalfont\XDU@font@st\XDU@font@zihao{2}\setlength{\baselineskip}{30pt}%
-    \makebox[\textwidth]{\rule{0pt}{12cm}}
+    %中英文标题
+    \makebox[\textwidth]{\rule{0pt}{2cm}}
     \rule[-3.2cm]{0pt}{3.2cm}\parbox[t]{\textwidth}{%
     \begin{center}%
-        {\XDU@bold\XDU@value@thesis@title}%
+        {\XDU@bold\XDU@value@thesis@title}\\ \vspace{2cm}
+        {\XDU@bold\XDU@evalue@thesis@title}
     \end{center}%
-    }
+    } 
+    %学科专业、作者、导师信息
     \makebox[\textwidth]{\rule{0pt}{3.5cm}}
     \rule[-3.2cm+15pt]{0pt}{3.2cm}\hspace{3cm}\parbox[t]{9cm}{%
     \XDU@font@zihao{4}\setlength{\baselineskip}{30pt}%
     \newlength{\linelength}
-    \setlength{\linelength}{9cm-4.5em}
-    \XDU@bold\XDU@font@ht{作者姓名~}\XDU@font@st\XDU@underline[\linelength]{\XDU@value@author@name}\\%
-    \setlength{\linelength}{9cm-9.5em}
-    \XDU@bold\XDU@font@ht{指导教师姓名、职称~}\XDU@font@st\XDU@underline[\linelength]{\XDU@value@advisor@name~\XDU@value@advisor@title}\\%
-    \setlength{\linelength}{9cm-6.5em}
-    \XDU@bold\XDU@font@ht{申请学位类别~}\XDU@font@st\XDU@underline[\linelength]{\XDU@value@degree}%
+    \setlength{\linelength}{5cm}
+    \XDU@font@st{学科专业：~}\XDU@font@st\XDU@underline[\linelength]{\XDU@value@author@major}\\%
+    \setlength{\linelength}{5cm}
+    \XDU@font@st{研\hspace{1.75mm}究\hspace{1.75mm} 生：~}\XDU@font@st\XDU@underline[\linelength]{\XDU@value@author@name}\\%
+    \setlength{\linelength}{5cm}
+    \XDU@font@st{指导老师：~}\XDU@font@st\XDU@underline[\linelength]{\XDU@value@advisor@name~\XDU@value@advisor@title}%
+
+    \vspace{4cm}
+    \begin{center}
+    \XDU@value@author@school \\
+    \makebox[10em][c]{2019\ 年\ 10\ 月}
+    \end{center}
+    
     }
 \clearpage\thispagestyle{empty}\setlength{\parindent}{2\ccwd}\cleardoublepage}}
 
@@ -533,17 +555,22 @@ By \\%
     \captionsetup{labelsep=twospace} 
     \renewcommand{\captionfont}{\XDU@font@st\XDU@font@zihao{5}}
 
-%% list of figures
+%% list of figures 图清单
 \ctexset { listfigurename={\XDU@label@listoffigures } }
 \DeclareRobustCommand{\XDU@listoffigures}
   {\XDU@toc@add{\XDU@toc@listoffigures}%
     \listoffigures}
 
-%% list of tables
+%% list of tables 表清单
 \ctexset { listtablename={\XDU@label@listoftables } } 
 \DeclareRobustCommand{\XDU@listoftables}
   {\XDU@toc@add{\XDU@toc@listoftables}%
     \listoftables}
+
+%取消图片索引和表格索引中不同章节的间距
+\newcommand*{\noaddvspace}{\renewcommand*{\addvspace}[1]{}}
+\addtocontents{lof}{\protect\noaddvspace}
+\addtocontents{lot}{\protect\noaddvspace} 
 
 %% list of Symbols
 \newenvironment{symbollist}
