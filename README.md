@@ -1,3 +1,9 @@
+本模板基于[XDUthesis_xelatex-master-2019](https://github.com/Faust-Wang/XDUthesis_xelatex-master-2019)，并在天津大学机械工程学院-研究生论文格式规定（2019修订版）.docx基础上修改，正在逐步完善中。
+
+希望能有有兴趣的小伙伴一起来完成！
+
+邮箱：mekklu@tju.edu.cn
+
 # What is XDUthesis_xelatex?
 
 XDUthesis_xelatex is an *unofficial* XeLaTeX template for preparing bachelor, master, or doctor thesis in Xidian University.
