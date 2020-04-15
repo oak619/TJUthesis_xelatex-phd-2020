@@ -177,16 +177,21 @@
 \setCJKmainfont[BoldFont=SimHei]{SimSun}
 \setCJKmonofont{SimSun}     % 设置缺省中文字体
 \setCJKfamilyfont{song}[AutoFakeBold=1]{SimSun}                             %宋体 song  
-\setCJKfamilyfont{song}[AutoFakeBold=true]{SimSun}                             %宋体 song  
-\newcommand{\song}{\CJKfamily{song}}
+% \setCJKfamilyfont{song}[AutoFakeBold=true]{SimSun}                             %宋体 song  
+\newcommand{\song}{\CJKfamily{song}} %宋体
+
 %\setCJKfamilyfont{hei}{SimHei}                              %黑体  hei 
 %\setCJKfamilyfont{hei}[AutoFakeBold=1]{SimHei}                              %黑体  hei  
 \setCJKfamilyfont{hei}[AutoFakeBold=true]{SimHei}                              %黑体  hei  
-\newcommand{\hei}{\CJKfamily{hei}}
-  
+\newcommand{\hei}{\CJKfamily{hei}} %黑体
+% \setCJKfamilyfont{zhkai}{KaiTi}
+\setCJKfamilyfont{kai}[AutoFakeBold=true]{KaiTi}
+\newcommand{\kai}{\CJKfamily{kai}}      % 楷体
+
 %% family
 \DeclareRobustCommand*{\XDU@font@st}{\song}
 \DeclareRobustCommand*{\XDU@font@ht}{\hei}
+\DeclareRobustCommand*{\XDU@font@kt}{\kai}
 
 %% size
 \DeclareRobustCommand*{\XDU@font@zihao}[1]{\zihao{#1}\setlength{\baselineskip}{20pt}}
@@ -198,7 +203,7 @@
 %% 参考网址：https://en.wikibooks.org/wiki/LaTeX/Page_Layout
 %% page ql head
 %页边距
-\setlength{\textwidth}{\paperwidth-6.34cm}% 3.57+2.77
+\setlength{\textwidth}{\paperwidth-7.14cm}% 3.57+2.77 = 6.34 + 0.8 = 7.14
 \setlength{\textheight}{\paperheight-3cm-3cm}%
 \setlength\marginparwidth{0cm}%
 \setlength\marginparsep{0cm}%
@@ -220,7 +225,7 @@
 \setlength{\footskip}{3cm-1.75cm}%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%    head and foot
+%%    head and foot 页眉页脚
 
 \RequirePackage{fancyhdr}
 %% remove header from empty page
@@ -262,7 +267,7 @@
 %% par skip
 %\parskip 0pt plus 6pt minus 0pt
 
-%% section level
+%% section level 目录深度
 \setcounter{secnumdepth}{4}
 
 %% chapter
@@ -287,7 +292,7 @@
 \ctexset { section = {
                       name={,}, 
                       number={\thesection }, 
-                      format={\raggedright \XDU@bold \XDU@font@st \XDU@font@zihao {-3}}, 
+                      format={\raggedright \XDU@font@ht \XDU@font@zihao {4}}, 
                       nameformat={},
                       numberformat={}, 
                       aftername={\quad }, 
@@ -302,7 +307,7 @@
 \ctexset { subsection = {
                          name={,}, 
                          number={\thesubsection},
-                         format={\raggedright \XDU@bold \XDU@font@st \XDU@font@zihao {4}},
+                         format={\raggedright \XDU@font@ht \XDU@font@zihao {-4}},
                          nameformat={}, 
                          numberformat={}, 
                          aftername={\quad }, 
@@ -317,7 +322,7 @@
 \ctexset { subsubsection = { 
                             name={,}, 
                             number={\thesubsubsection},
-                            format={\raggedright \XDU@font@st \XDU@font@zihao {-4}}, 
+                            format={\raggedright \XDU@font@st \bfseries\XDU@font@zihao {-4}}, 
                             nameformat={},
                             numberformat={}, 
                             aftername={\quad }, 
@@ -381,6 +386,7 @@
     }
 \clearpage\thispagestyle{empty}\setlength{\parindent}{2\ccwd}\cleardoublepage}}
 
+%中文标题页声明
 \DeclareRobustCommand{\XDU@make@title}
   {{\cleardoublepage\setlength{\parindent}{0pt}\thispagestyle{empty}%
 
@@ -428,7 +434,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%    english  cover
-
+%中文标题页声明
 \DeclareRobustCommand{\XDU@make@titleenglish}
   {{\cleardoublepage\setlength{\parindent}{0pt}\thispagestyle{empty}%
     \normalfont\XDU@font@st%
@@ -463,47 +469,47 @@ By \\%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%    statement and copyright
-
+%独创性声明
 \DeclareRobustCommand{\XDU@make@statementandcopyright}
   {{\cleardoublepage\setlength{\parindent}{0pt}\thispagestyle{empty}%
   \normalfont\XDU@font@st%
    \begin{center}%
-   \bfseries\XDU@font@zihao{4}%
-     \XDU@label@stat@statement%
+   \XDU@font@zihao{-2}%
+     \XDU@label@stat@statement%独创性声明字样
    \end{center}%
    \XDU@font@zihao{-4}%
-   \hspace*{2em}\setlength{\parindent}{2\ccwd}\XDU@value@stat@statement\setlength{\parindent}{0pt}%
+   \hspace*{2em}\setlength{\parindent}{2\ccwd}\XDU@value@stat@statement\setlength{\parindent}{0pt}%独创性声明内容
   \vskip 20pt%
-   \hspace*{2em}\XDU@lable@stat@auther\XDU@underline[100pt]{}\hspace*{1em}%
-    \hfill \XDU@lable@stat@date\XDU@underline[100pt]{}\hspace*{1em}
+   \hspace*{2em}\XDU@lable@stat@auther\hspace* {2em}%学位论文作者签名字样 
+    \hfill \XDU@lable@stat@date\hspace*{1em} %签字日期字样
   \vskip \stretch{6}%
    \begin{center}%
-     \bfseries\XDU@font@zihao{4}%
-     \XDU@lable@stat@copyright%
+     \bfseries\XDU@font@zihao{-2}%
+     \XDU@lable@stat@copyright%学位论文版权使用授权书字样
    \end{center}%
    \XDU@font@zihao{-4}%
-   \hspace*{2em}\setlength{\parindent}{2\ccwd}\XDU@value@stat@copyright\setlength{\parindent}{0pt}%
+   \hspace*{2em}\setlength{\parindent}{2\ccwd}\XDU@value@stat@copyright\setlength{\parindent}{0pt}%学位论文版权使用授权书内容
   \vskip 20pt%
    \normalfont\XDU@font@st\XDU@font@zihao{-4}%
-   \hspace*{2em}\XDU@lable@stat@auther\XDU@underline[100pt]{}\hspace*{1em}%
-    \hfill \XDU@lable@stat@advisor\XDU@underline[100pt]{}\hspace*{1em}%
+   \hspace*{2em}\XDU@lable@stat@auther\hspace*{1em}%
+    \hfill \XDU@lable@stat@advisor\hspace*{8em}%
   \vskip 20pt%
-   \hspace*{2em}\XDU@lable@stat@date\XDU@underline[100pt]{}\hspace*{1em}%
-    \hfill \XDU@lable@stat@date\XDU@underline[100pt]{}\hspace*{1em}%
+   \hspace*{2em}\XDU@lable@stat@date\hspace*{1em}%
+    \hfill \XDU@lable@stat@date\hspace*{1em}%
   \vskip \stretch{1}%
   \clearpage\thispagestyle{empty}%
   \setlength{\parindent}{2\ccwd}\cleardoublepage}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%    abstract
-
+%%中文摘要
 %% chinese abstract
 \newenvironment{abstract}
   {\XDU@toc@add{\XDU@toc@abstract}%
-   \XDU@nchapter{\XDU@label@abstract}\XDU@font@zihao{-4}}
+   \XDU@nchapter{\XDU@font@st\XDU@bold\XDU@font@zihao{2}\XDU@label@abstract}\XDU@font@zihao{-4}}
   {\cleardoublepage}
 
-%% chinese keywords
+%% chinese keywords 关键词
 \DeclareRobustCommand{\keywords}[1]
   {{\setlength{\parindent}{0pt}\vspace{20pt}%
    \normalfont\XDU@font@st\bfseries\XDU@font@zihao{-4}%
@@ -511,7 +517,7 @@ By \\%
    \normalfont\XDU@font@st\XDU@font@zihao{-4}%
    {#1}\setlength{\parindent}{2\ccwd}}}
 
-%% english abstract
+%% english abstract 英文摘要
 \newenvironment{englishabstract}
   {\XDU@toc@add{\XDU@etoc@abstract}\XDU@nchapter{\XDU@elabel@abstract}%
    \vspace{-2ex}\setlength{\parindent}{0pt}\normalfont\XDU@font@zihao{-4}%
@@ -527,7 +533,7 @@ By \\%
    {#1}\setlength{\parindent}{2\ccwd}}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%    content
+%%    content 字号
     \renewcommand{\cftdot}{\ldots}
     \renewcommand{\cftdotsep}{0.1}
     \setlength{\cftbeforechapskip}{0pt}
@@ -673,8 +679,8 @@ By \\%
 %% front matter
 \DeclareRobustCommand{\XDUfrontmatter}
   {\XDU@make@cover%
-   \XDU@make@title%
-   \XDU@make@titleenglish%
+   %\XDU@make@title%不显示中文标题页
+   %\XDU@make@titleenglish%不显示英文标题页
    \XDU@make@statementandcopyright%
    \frontmatter\pagenumbering{Roman}%
    \setlength{\baselineskip}{20pt}
