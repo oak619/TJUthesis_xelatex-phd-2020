@@ -48,10 +48,20 @@
 %% ifthen
 \RequirePackage{ifthen}
 
+\RequirePackage{multirow}
+\RequirePackage{graphicx}
+\RequirePackage{diagbox}
+\RequirePackage{subfigure}
+\RequirePackage{float} %禁止某个浮动体的浮动效果，可以使用 float 宏包提供的 H 位置选项。
+\RequirePackage{caption}
+\RequirePackage{tikz}
+\RequirePackage{color}
+\usetikzlibrary{positioning} % LATEX and plain TEX
+
+\RequirePackage{eqnarray}
 
 
-
-\RequirePackage[titles]{tocloft}
+\RequirePackage[titles,subfigure]{tocloft}
 
 \RequirePackage{caption}
 
@@ -120,6 +130,9 @@
 
 %%%%%%%%%%%%%%%%%%%%
 %% setup packages
+
+% [subrefformat=parens,labelformat=parens]
+
 %%%%%%%%%%%%%%%%%%%%
 %% setup
 \ifXDU@Option@PrintVersion
@@ -293,7 +306,7 @@
                         numberformat={},
                         aftername={\quad },
                         titleformat={}, 
-                        beforeskip={6pt}, 
+                        beforeskip={12pt}, 
                         afterskip={18pt},
                         indent={0pt} 
                     } 
@@ -311,8 +324,8 @@
                       numberformat={}, 
                       aftername={\quad }, 
                       titleformat={}, 
-                      beforeskip={18pt plus 0pt minus 0pt}, 
-                      afterskip={12pt}, 
+                      beforeskip={12pt plus 0pt minus 0pt}, 
+                      afterskip={0pt}, 
                       indent={0pt} 
                      } 
 }
@@ -327,8 +340,8 @@
                          aftername={\quad }, 
                          titleformat={},
                          beforeskip={12pt plus 0pt minus 0pt}, 
-                         afterskip={6pt}, 
-                         indent={2em} 
+                         afterskip={0pt}, 
+                         indent={0em} 
                         } 
 }
 
@@ -341,8 +354,8 @@
                             numberformat={}, 
                             aftername={\quad }, 
                             titleformat={}, 
-                            beforeskip={6pt plus 0pt minus 0pt}, 
-                            afterskip={0pt}, indent={4em} 
+                            beforeskip={12pt plus 0pt minus 0pt}, 
+                            afterskip={0pt}, indent={0em} 
                            } 
 }
 
@@ -351,12 +364,12 @@
 
 %% figure name
 \ctexset { figurename={\XDU@font@zihao {5}\XDU@label@figure@cap } }
-
+\renewcommand{\thefigure}{\arabic{chapter}-\arabic{figure}} % 使图编号为 7-1 的格式
 %% table name
 \ctexset { tablename={\XDU@font@zihao {5}\XDU@label@table@cap } } 
 \newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}} %转行
-
-\renewcommand{\theequation}{\arabic{chapter}-\arabic{equation}}
+\renewcommand{\thetable}{\arabic{chapter}-\arabic{table}}%使表编号为 7-1 的格式
+\renewcommand{\theequation}{\arabic{chapter}-\arabic{equation}}%使公式编号为 7-1 的格式
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -701,6 +714,7 @@ By \\%
    \XDU@make@statementandcopyright%
    \frontmatter\pagenumbering{Roman}%
    \setlength{\baselineskip}{20pt}
+   \pagestyle{precontent} %开启正文前页眉页脚样式(fancyhdr宏包)
    }
 
 %% premain matter
@@ -711,7 +725,9 @@ By \\%
 %% main matter
 \DeclareRobustCommand{\XDUmainmatter}
   {\XDU@tableofcontents\cleardoublepage%
-   \mainmatter}
+   \mainmatter
+   \pagestyle{content} %开启正文页眉页脚样式(fancyhdr宏包)
+   }
 % \frontmatter：关闭章节序号， 页码使用罗马数字;\mainmatter：开启章节序号计数，重置页码，页码使用阿拉伯数字;\appendix：重置章节序号计数， 章节序号使用字母，对页码没有影响；\backmatter：关闭章节序号，对页码没有影响。
 
 % 作者：张瑜

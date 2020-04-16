@@ -1,26 +1,15 @@
 %! TEX program = xelatex
 \documentclass[refcompress,pversion,noinfo]{XDUthesis}
 %eversion 电子版，奇偶页边距相同；pversion 打印版，奇偶页边距不同
-\usepackage{multirow}
-\usepackage{graphicx}
-\usepackage{diagbox}
-\usepackage[subrefformat=parens,labelformat=parens]{subfig}
-\usepackage{caption}
-\usepackage{tikz}
-\usepackage{color}
-\usetikzlibrary{positioning} % LATEX and plain TEX
-
-
 
 \graphicspath{{figures/}} %设置默认图片目录
 
 \begin{document}
-
 \XDUfrontmatter
-\pagestyle{precontent} %开启正文前页眉页脚样式(fancyhdr宏包)
+% \pagestyle{precontent} %开启正文前页眉页脚样式(fancyhdr宏包)
 \include{chapters/abstract}
 \XDUmainmatter
-\pagestyle{content} %开启正文页眉页脚样式(fancyhdr宏包)
+% \pagestyle{content} %开启正文页眉页脚样式(fancyhdr宏包)
 \include{chapters/general}
 \include{chapters/substance}
 \include{chapters/edit}
