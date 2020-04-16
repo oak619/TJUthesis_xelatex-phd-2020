@@ -235,35 +235,49 @@
 \def\XDU@hdr@thesistitle
   {\XDU@label@university\XDU@value@degreemark\XDU@value@thesis}
 
-%% the double line under header，页眉下划线
-\renewcommand{\headrulewidth}{0.5pt}
-\newcommand{\makeheadrule}{%
-\makebox[0pt][l]{\rule[9pt]{\headwidth}{0.5pt}}} %修改页眉又下划线，为单下划线
-% \makebox[0pt][l]{\rule[9pt]{\headwidth}{0.5pt}}%
-% \rule[8pt]{\headwidth}{0.5pt}}
-\renewcommand{\headrule}{%
-{\if@fancyplain\let\headrulewidth\plainheadrulewidth\fi
-\makeheadrule}}
-%\renewcommand{\headrule}{%
-%    {\if@fancyplain\let\headrulewidth\plainheadrulewidth\fi
-%    %\vskip 1pt% 
-%    \hrule\@height\headrulewidth\@width\headwidth
-%    \hrule\@height\headrulewidth\@width\headwidth
-%    \vskip-1\headrulewidth
-%    %\vskip-1pt
-%    }
-%}
-
-%% set header
 \fancypagestyle{plain}{
-    \pagestyle{fancy}
+  \pagestyle{fancy}
 }
 
 \pagestyle{fancy}
+% %% the double line under header，页眉下划线
+% \renewcommand{\headrulewidth}{0.5pt}
+% \newcommand{\makeheadrule}{%
+% \makebox[0pt][l]{\rule[9pt]{\headwidth}{0.5pt}}} %修改页眉又下划线，为单下划线
+% % \makebox[0pt][l]{\rule[9pt]{\headwidth}{0.5pt}}%
+% % \rule[8pt]{\headwidth}{0.5pt}}
+% \renewcommand{\headrule}{%
+% {\if@fancyplain\let\headrulewidth\plainheadrulewidth\fi
+% \makeheadrule}}
+% %\renewcommand{\headrule}{%
+% %    {\if@fancyplain\let\headrulewidth\plainheadrulewidth\fi
+% %    %\vskip 1pt% 
+% %    \hrule\@height\headrulewidth\@width\headwidth
+% %    \hrule\@height\headrulewidth\@width\headwidth
+% %    \vskip-1\headrulewidth
+% %    %\vskip-1pt
+% %    }
+% %}
+\fancypagestyle{content}{
 \fancyhf{}
+\renewcommand{\headrulewidth}{0.5pt}
+\setlength\headsep{5pt}
 \fancyhead[CE]{{\XDU@font@st\XDU@font@zihao{5}\XDU@hdr@thesistitle}}
 \fancyhead[CO]{{\XDU@font@st\XDU@font@zihao{5}\nouppercase\leftmark}}
 \fancyfoot[C]{{\XDU@font@st\XDU@font@zihao{-5}\thepage}}
+}
+%% set header
+\fancypagestyle{precontent}{
+    % \renewcommand{\headrulewidth}{0pt}
+    \fancyhead{}
+    % \fancyhf{} % clear all header and footer fields
+    \renewcommand\headrulewidth{0pt}
+    % \fancyfoot[C]{{\XDU@font@st\XDU@font@zihao{-5}\thepage}}
+%     \renewcommand{\makeheadrule}{%
+% \makebox[0pt][l]{\rule[9pt]{\headwidth}{0.5pt}}} %修改页眉又下划线，为单下划线
+}
+% \pagestyle{content}
+% \pagestyle{fancy}
 %% par skip
 %\parskip 0pt plus 6pt minus 0pt
 
@@ -506,13 +520,16 @@ By \\%
 %% chinese abstract
 \newenvironment{abstract}
   {\XDU@toc@add{\XDU@toc@abstract}%
-   \XDU@nchapter{\XDU@font@st\XDU@bold\XDU@font@zihao{2}\XDU@label@abstract}\XDU@font@zihao{-4}}
+  \begin{center}
+     {\XDU@font@st\XDU@bold\XDU@font@zihao{2}\XDU@label@abstract}
+  \end{center}
+   \XDU@font@zihao{-4}}
   {\cleardoublepage}
 
 %% chinese keywords 关键词
 \DeclareRobustCommand{\keywords}[1]
-  {{\setlength{\parindent}{0pt}\vspace{20pt}%
-   \normalfont\XDU@font@st\bfseries\XDU@font@zihao{-4}%
+  {{\setlength{\parindent}{2em}\vspace{20pt}%
+   \normalfont\XDU@font@ht\XDU@font@zihao{4}%
    \XDU@label@keywords%
    \normalfont\XDU@font@st\XDU@font@zihao{-4}%
    {#1}\setlength{\parindent}{2\ccwd}}}
@@ -526,8 +543,8 @@ By \\%
 
 %% english keywords
 \DeclareRobustCommand{\englishkeywords}[1]
-  {{\setlength{\parindent}{0pt}\vspace{2ex}%
-   \normalfont\XDU@font@st\bfseries\XDU@font@zihao{-4}%
+  {{\setlength{\parindent}{2em}\vspace{2ex}%
+   \normalfont\XDU@font@st\bfseries\XDU@font@zihao{4}%
    \XDU@elabel@keywords~%
    \normalfont\XDU@font@st\XDU@font@zihao{-4}%
    {#1}\setlength{\parindent}{2\ccwd}}}
@@ -695,7 +712,12 @@ By \\%
 \DeclareRobustCommand{\XDUmainmatter}
   {\XDU@tableofcontents\cleardoublepage%
    \mainmatter}
+% \frontmatter：关闭章节序号， 页码使用罗马数字;\mainmatter：开启章节序号计数，重置页码，页码使用阿拉伯数字;\appendix：重置章节序号计数， 章节序号使用字母，对页码没有影响；\backmatter：关闭章节序号，对页码没有影响。
 
+% 作者：张瑜
+% 链接：https://www.zhihu.com/question/56203547/answer/829181566
+% 来源：知乎
+% 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
 %% back matter
 \DeclareRobustCommand{\XDUbackmatter}[1]
   {\backmatter{}#1{}}
