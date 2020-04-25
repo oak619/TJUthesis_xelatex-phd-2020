@@ -106,3 +106,39 @@
     \zihao{5}
     Figure\ \thefigure \ Wavenumber distribution of graphene sample along length direction under different substrate strain
 \end{figure}
+
+\subsection{表}
+\begin{enumerate}
+    \item[a.] 表的编排采用国际通行的三线表，居中，无缩进。
+    \item[b.] 表序及表名置于表的上方，居中无缩进，字号为五号，其余与正文同。
+    \item[c.] 表名包括中文名和英文名，中文在上，英文在下。
+    \item[d.] 表中文字居中无缩进，1.25行距，段前后间距为0，字号（包括文字、公式、变量、符号等）为五号，其余与正文同。
+    \item[e.] 表中参数应标明量和单位的符号。
+    \item[f.] 如需转页接排，在随后页上应重复表的编号和表题，并在表题后注明“（续）”，续表均应重复表头。
+\end{enumerate}
+
+依照以上标准的三线表范例如下。
+%需要调用宏包\usepackage{booktabs}
+\begin{table}[H]%需要调用宏包\usepackage{float}
+    \renewcommand{\arraystretch}{1.5}%更改行距倍数
+    \setlength{\abovecaptionskip}{2pt}
+    \setlength{\belowcaptionskip}{5pt}
+    \caption{tableCaption}
+    \label{table:tableCaption}
+    \centering
+    \zihao{5}
+    Table\ \thetable \ tableCaptionEn \vspace{2pt}\\%注意删除空格
+    \begin{tabular}{ccc}
+        \toprule
+        实验方法     & 主要测量对象       & 空间分辨率          \\%注意删除空格
+        \midrule
+        原子力显微镜 & 表面力             & 0.1 nm\cite{dugang} \\%注意删除空格
+        透射电镜     & 晶格结构、位错     & 0.1 nm              \\
+        X射线衍射    & 应变               & 1 \si{\micro}m      \\
+        同步辐射     & 内部三维结构与变形 & 约100 nm            \\
+        显微拉曼     & 应变               & 250 nm              \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+

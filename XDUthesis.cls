@@ -52,12 +52,13 @@
 \RequirePackage{graphicx}
 \RequirePackage{diagbox}
 \RequirePackage{subfigure}
+\RequirePackage{booktabs} %制作三线表
 \RequirePackage{float} %禁止某个浮动体的浮动效果，可以使用 float 宏包提供的 H 位置选项。
 \RequirePackage{caption}
 \RequirePackage{tikz}
 \RequirePackage{color}
 \usetikzlibrary{positioning} % LATEX and plain TEX
-
+\RequirePackage{siunitx} %国际标准单位
 \RequirePackage{eqnarray}
 
 
@@ -349,7 +350,7 @@
 \ctexset { subsubsection = { 
                             name={,}, 
                             number={\thesubsubsection},
-                            format={\raggedright \XDU@font@st \bfseries\XDU@font@zihao {-4}}, 
+                            format={\raggedright \XDU@font@st \XDU@font@zihao {-4}}, 
                             nameformat={},
                             numberformat={}, 
                             aftername={\quad }, 
