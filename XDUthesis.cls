@@ -52,6 +52,7 @@
 \RequirePackage{graphicx}
 \RequirePackage{diagbox}
 \RequirePackage{subfigure}
+% \captionsetup{compatibility=false}
 \RequirePackage{booktabs} %制作三线表
 \RequirePackage{float} %禁止某个浮动体的浮动效果，可以使用 float 宏包提供的 H 位置选项。
 \RequirePackage{caption}
@@ -178,6 +179,11 @@
 \RequirePackage{amssymb}
 \RequirePackage{mathrsfs}
 \RequirePackage{calrsfs}
+
+\RequirePackage{titlesec}
+
+
+
 \@ifpackageloaded{fontspec}{
     \PassOptionsToPackage{no-math}{fontspec}
 }{
@@ -217,8 +223,8 @@
 %% 参考网址：https://en.wikibooks.org/wiki/LaTeX/Page_Layout
 %% page ql head
 %页边距
-\setlength{\textwidth}{\paperwidth-7.14cm}% 3.57+2.77 = 6.34 + 0.8 = 7.14
-\setlength{\textheight}{\paperheight-3cm-3cm}%
+\setlength{\textwidth}{\paperwidth-6.34cm}% 3.57+2.77 = 6.34 + 0.8 = 7.14
+\setlength{\textheight}{\paperheight-6cm}%
 \setlength\marginparwidth{0cm}%
 \setlength\marginparsep{0cm}%
 \ifXDU@Option@PrintVersion

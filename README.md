@@ -1,12 +1,12 @@
-本模板基于[XDUthesis_xelatex-master-2019](https://github.com/Faust-Wang/XDUthesis_xelatex-master-2019)，并在天津大学机械工程学院-研究生论文格式规定（2019修订版）.docx基础上修改，正在逐步完善中。
-
-希望能有有兴趣的小伙伴一起来完成！
+本模板基于[XDUthesis_xelatex-master-2019](https://github.com/Faust-Wang/XDUthesis_xelatex-master-2019)，并在天津大学机械工程学院-研究生论文格式规定（2019修订版）.docx基础上修改，目前已经基本完成，当然肯定还存在一些小的bug，但如果你会用到这个模板，说明我们应该是同样要毕业的校友，我们可以一起探讨完善。
 
 邮箱：mekklu@tju.edu.cn
 
 编译引擎：**TeX Live 2020** + Windows 10 + VS Code
 
 编译方式：xelatex
+
+Github地址：https://github.com/oak619/TJUthesis_xelatex-phd-2020
 
 > # What is XDUthesis_xelatex?
 >

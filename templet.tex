@@ -11,11 +11,21 @@
 \XDUmainmatter
 % \pagestyle{content} %开启正文页眉页脚样式(fancyhdr宏包)
 \include{chapters/general}
-\include{chapters/substance}
-\include{chapters/edit}
-\include{chapters/guide}
-\include{chapters/supplementary}
+\include{chapters/chapter2}
+\include{chapters/chapter3}
+\include{chapters/chapter4}
+\include{chapters/chapter5}
+% \include{chapters/chapterSummery}
+% \include{chapters/substance}
+% \include{chapters/edit}
+% \include{chapters/guide}
+% \include{chapters/supplementary}
+\titleformat{\chapter}[display]{\bfseries \fontsize{22pt}{0pt}\centering
+}{\thechapter}{1em}{}{}
+\titlespacing{\chapter}{0pt}{8pt}{18pt}
 \XDUbackmatter{\bibliography{bib/tex}}
+\include{chapters/supplementary}
+\include{chapters/achievements}
 \include{chapters/thanks}
-\include{chapters/resume}
+% \include{chapters/resume}
 \end{document}

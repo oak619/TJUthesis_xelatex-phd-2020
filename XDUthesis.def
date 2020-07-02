@@ -74,8 +74,8 @@
 \def\XDU@toc@ref@title{参考文献}
 
 % 致谢
-\def\XDU@label@thanks{致谢}
-\def\XDU@toc@thanks{致谢}
+\def\XDU@label@thanks{致\quad 谢}
+\def\XDU@toc@thanks{致\quad 谢}
 
 % 简历
 \def\XDU@label@resume@title{作者简介}
