@@ -62,8 +62,8 @@
 \def\XDU@toc@listoffigures{图清单}
 \def\XDU@label@listoftables{表清单}
 \def\XDU@toc@listoftables{表清单}
-\def\XDU@label@symbollist@title{符号对照表}
-\def\XDU@toc@symbollist@title{符号对照表}
+\def\XDU@label@symbollist@title{字母注释表}
+\def\XDU@toc@symbollist@title{字母注释表}
 \def\XDU@label@abbreviationlist@title{缩略语对照表}
 \def\XDU@toc@abbreviationlist@title{缩略语对照表}
 \def\XDU@label@content{目录}

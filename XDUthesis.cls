@@ -618,17 +618,32 @@ By \\%
 %% list of Symbols
 \newenvironment{symbollist}
   {\setlength{\parindent}{0pt}\XDU@toc@add{\XDU@toc@symbollist@title}%
+  \titleformat{\chapter}[display]{\bfseries \fontsize{22pt}{0pt}\centering
+}{\thechapter}{1em}{}{}
+\titlespacing{\chapter}{0pt}{8pt}{18pt}
    \XDU@nchapter{\XDU@label@symbollist@title}\setlength{\parindent}{2\ccwd}%
    \begin{list}{}
     {\setlength{\topsep}{0pt}\setlength{\itemsep}{0pt}\setlength{\parsep}{0pt}
-    \setlength{\parindent}{0pt}\normalfont\XDU@font@st\XDU@font@zihao{-4}
-     \setlength{\leftmargin}{0.5\labelwidth}}}
+    \setlength{\parindent}{0pt}
+     \setlength{\leftmargin}{2em}}}
   {\end{list}\setlength{\parindent}{2\ccwd}\cleardoublepage}
 
+%原字母环境
+%item无法加粗字体，现删掉了\normalfont\XDU@font@st\XDU@font@zihao{-4}
+%   \newenvironment{symbollist}
+%    \XDU@nchapter{\XDU@label@symbollist@title}\setlength{\parindent}{2\ccwd}%
+%    \begin{list}{}
+%     {\setlength{\topsep}{0pt}\setlength{\itemsep}{0pt}\setlength{\parsep}{0pt}
+%     \setlength{\parindent}{0pt}\normalfont\XDU@font@st\XDU@font@zihao{-4}
+%      \setlength{\leftmargin}{0.5\labelwidth}}}
+%   {\end{list}\setlength{\parindent}{2\ccwd}\cleardoublepage}
 
 %% list of abbreviations
 \newenvironment{abbreviationlist}
   {\setlength{\parindent}{0pt}\XDU@toc@add{\XDU@toc@abbreviationlist@title}%
+  \titleformat{\chapter}[display]{\bfseries \fontsize{22pt}{0pt}\centering
+}{\thechapter}{1em}{}{}
+\titlespacing{\chapter}{0pt}{8pt}{18pt}
    \XDU@nchapter{\XDU@label@abbreviationlist@title}\setlength{\parindent}{2\ccwd}%
    \begin{list}{}
     {\setlength{\topsep}{0pt}\setlength{\itemsep}{0pt}\setlength{\parsep}{0pt}
