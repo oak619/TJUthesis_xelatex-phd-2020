@@ -8,6 +8,8 @@
 
 Github地址：https://github.com/oak619/TJUthesis_xelatex-phd-2020
 
+说明：该模板为**非官方**模板，免费下载使用，对使用该模板产生的一切问题本人概不负责。
+
 > # What is XDUthesis_xelatex?
 >
 > XDUthesis_xelatex is an *unofficial* XeLaTeX template for preparing bachelor, master, or doctor thesis in Xidian University.
