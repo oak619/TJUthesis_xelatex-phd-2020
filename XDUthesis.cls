@@ -55,17 +55,38 @@
 % \captionsetup{compatibility=false}
 \RequirePackage{booktabs} %制作三线表
 \RequirePackage{float} %禁止某个浮动体的浮动效果，可以使用 float 宏包提供的 H 位置选项。
-\RequirePackage{caption}
+\RequirePackage[justification=centering]{caption}
 \RequirePackage{tikz}
 \RequirePackage{color}
 \usetikzlibrary{positioning} % LATEX and plain TEX
 \RequirePackage{siunitx} %国际标准单位
 \RequirePackage{eqnarray}
+\RequirePackage{bm}
 
 
 \RequirePackage[titles,subfigure]{tocloft}
+% \renewcommand{\figurename}{图} \renewcommand{\tablename}{表}
+% \newlength{\mylen}
+% \renewcommand{\cftfigpresnum}{\figurename\enspace}
+% \settowidth{\mylen}{\cftfigpresnum\cftfigaftersnum}
+% \addtolength{\cftfignumwidth}{\mylen}
 
-\RequirePackage{caption}
+\renewcommand{\@dotsep}{1}
+\renewcommand{\@pnumwidth}{0.5em}
+\renewcommand{\@tocrmarg}{1.5em}
+% \renewcommand{\l@section}{\@dottedtocline{1}{1.5em}{2.3em}}
+% \renewcommand{\l@figure}{\@dottedtocline{1}{1.5em}{1.3em}}
+% \setlength{\cftsecnumwidth}{1em}
+\setlength{\cftfignumwidth}{0em}
+% \setlength{\cfttabnumwidth}{1em}
+% \renewcommand{\cftdot}{\ensuremath{\ast}}
+% \setlength{\cftXindent}{1em}
+% \cftsetindents{figure}{0em}{0.5em}
+% \renewcommand{\cftXpresnum}{SOMETHING }
+% \renewcommand{\numberwidth}{2em}
+% \renewcommand{\l@section}{\@dottedtocline{1}{1.5em}{1.5em}}
+
+% \RequirePackage{caption}
 
 \RequirePackage{diagbox}
 
@@ -141,6 +162,11 @@
   \hypersetup{
     CJKbookmarks,
     bookmarksnumbered,
+    colorlinks,
+    linkcolor     = black,
+    anchorcolor   = black,
+    citecolor     = black,
+    urlcolor      = black,
     plainpages    = false,
     pdfstartview  = FitH
   }
@@ -386,38 +412,90 @@
 \DeclareRobustCommand{\XDU@make@cover}
 {%天津大学博士学位论文字样
   {\setlength{\parindent}{0pt}\thispagestyle{empty}%
+  % \quad
+  \vspace*{17pt}
+  % \vspace{1cm}
     \begin{center}
-     \fontsize{17pt}{\baselineskip}\selectfont  \XDU@hdr@thesistitle 
+      \renewcommand{\baselinestretch}{1.25}
+    %  \fontsize{17pt}{\baselineskip}\selectfont  \XDU@hdr@thesistitle 
+    %  \vskip 10pt
+     \normalfont\XDU@font@st\XDU@font@zihao{2}\setlength{\baselineskip}{30pt}
+     {\XDU@bold\XDU@value@thesis@title}\\ 
+     \vspace{1cm}
+     \normalfont\XDU@font@st\XDU@font@zihao{-2}
+     {\XDU@bold\XDU@evalue@thesis@title}
+
+     \vskip 80pt
+
+     \XDU@font@zihao{4}\setlength{\baselineskip}{30pt}%
+     \newlength{\linelength}
+     \setlength{\linelength}{6cm}
+     \XDU@font@st{一级学科：~}\XDU@font@st\XDU@underline[\linelength]{\makebox[\linelength][l]{\XDU@value@author@major}}\\%
+     \XDU@font@st{研究方向：~}\XDU@font@st\XDU@underline[\linelength]{\makebox[\linelength][l]{我的研究方向}}\\%
+    %  \setlength{\linelength}{4cm}
+     \XDU@font@st{作者姓名：~}\XDU@font@st\XDU@underline[\linelength]{\makebox[\linelength][l]{\XDU@value@author@name}}\\%
+    %  \setlength{\linelength}{4cm}
+     \XDU@font@st{指导教师：~}\XDU@font@st\XDU@underline[\linelength]{\makebox[\linelength][l]{\XDU@value@advisor@name~\XDU@value@advisor@title}}%
+ 
+     \vskip 20pt
+
+     % Please add the following required packages to your document preamble:
+% \usepackage{multirow}
+\begin{table}[H]
+  \renewcommand{\arraystretch}{1.2}%更改行距倍数
+  \centering
+  % \resizebox{\linewidth}{!}{
+  \begin{tabular}{|c|c|c|c|}
+  \hline
+  答辩日期                & \multicolumn{3}{c|}{2021年5月27日}     \\ \hline
+  答辩委员会               & 姓名  & 职称  & 工作单位                    \\ \hline
+  主席                  & 钱三  & 教授  & 清华大学                    \\ \hline
+  \multirow{6}{*}{委员} & 孙四  & 教授  & 北京航空航天大学 \\ \cline{2-4} 
+                      & 王五  & 教授  & 天津大学                    \\ \cline{2-4} 
+                      & 赵六  & 教授  & 天津大学                    \\ \cline{2-4} 
+                      & 牛七 & 教授  & 天津大学                    \\ \cline{2-4} 
+                      & 马八 & 教授  & 天津大学              \\ \cline{2-4} 
+                      & 刘九 & 研究员 & 天津大学                    \\ \hline
+  \end{tabular}
+  % }
+  \end{table}
+
+    %  \begin{center}
+      \setlength{\baselineskip}{25pt}
+     \XDU@value@author@school \\
+     \makebox[10em][c]{二〇二一\ 年\ 六\ 月}
+    %  \end{center}
     \end{center}
     %空行
-    \normalfont\XDU@font@st\XDU@font@zihao{2}\setlength{\baselineskip}{30pt}%
-    %中英文标题
-    \makebox[\textwidth]{\rule{0pt}{2cm}}
-    \rule[-3.2cm]{0pt}{3.2cm}\parbox[t]{\textwidth}{%
-    \begin{center}%
-        {\XDU@bold\XDU@value@thesis@title}\\ \vspace{2cm}
-        {\XDU@bold\XDU@evalue@thesis@title}
-    \end{center}%
-    } 
+    % \normalfont\XDU@font@st\XDU@font@zihao{2}\setlength{\baselineskip}{30pt}%
+    % %中英文标题
+    % \makebox[\textwidth]{\rule{0pt}{2cm}}
+    % \rule[-3.2cm]{0pt}{3.2cm}\parbox[t]{\textwidth}{%
+    % \begin{center}%
+    %   \vspace{-2cm}
+    %     {\XDU@bold\XDU@value@thesis@title}\\ \vspace{2cm}
+    %     {\XDU@bold\XDU@evalue@thesis@title}
+    % \end{center}%
+    % } 
     %学科专业、作者、导师信息
-    \makebox[\textwidth]{\rule{0pt}{3.5cm}}
-    \rule[-3.2cm+15pt]{0pt}{3.2cm}\hspace{3cm}\parbox[t]{9cm}{%
-    \XDU@font@zihao{4}\setlength{\baselineskip}{30pt}%
-    \newlength{\linelength}
-    \setlength{\linelength}{5cm}
-    \XDU@font@st{学科专业：~}\XDU@font@st\XDU@underline[\linelength]{\XDU@value@author@major}\\%
-    \setlength{\linelength}{5cm}
-    \XDU@font@st{研\hspace{1.75mm}究\hspace{1.75mm} 生：~}\XDU@font@st\XDU@underline[\linelength]{\XDU@value@author@name}\\%
-    \setlength{\linelength}{5cm}
-    \XDU@font@st{指导老师：~}\XDU@font@st\XDU@underline[\linelength]{\XDU@value@advisor@name~\XDU@value@advisor@title}%
+    % \makebox[\textwidth]{\rule{0pt}{3.5cm}}
+    % \rule[-3.2cm+15pt]{0pt}{3.2cm}\hspace{3cm}\parbox[t]{9cm}{%
+    % \XDU@font@zihao{4}\setlength{\baselineskip}{30pt}%
+    % \newlength{\linelength}
+    % \setlength{\linelength}{5cm}
+    % \XDU@font@st{学科专业：~}\XDU@font@st\XDU@underline[\linelength]{\XDU@value@author@major}\\%
+    % \setlength{\linelength}{5cm}
+    % \XDU@font@st{研\hspace{1.75mm}究\hspace{1.75mm} 生：~}\XDU@font@st\XDU@underline[\linelength]{\XDU@value@author@name}\\%
+    % \setlength{\linelength}{5cm}
+    % \XDU@font@st{指导老师：~}\XDU@font@st\XDU@underline[\linelength]{\XDU@value@advisor@name~\XDU@value@advisor@title}%
 
-    \vspace{4cm}
-    \begin{center}
-    \XDU@value@author@school \\
-    \makebox[10em][c]{2019\ 年\ 10\ 月}
-    \end{center}
+    % \vspace{4cm}
+    % \begin{center}
+    % \XDU@value@author@school \\
+    % \makebox[10em][c]{2021\ 年\ 06\ 月}
+    % \end{center}
     
-    }
+    % }
 \clearpage\thispagestyle{empty}\setlength{\parindent}{2\ccwd}\cleardoublepage}}
 
 %中文标题页声明
@@ -506,26 +584,31 @@ By \\%
 %独创性声明
 \DeclareRobustCommand{\XDU@make@statementandcopyright}
   {{\cleardoublepage\setlength{\parindent}{0pt}\thispagestyle{empty}%
+  \quad
+  % \vspace{5pt}
   \normalfont\XDU@font@st%
    \begin{center}%
+    % \vskip 20pt%
    \XDU@font@zihao{-2}%
      \XDU@label@stat@statement%独创性声明字样
    \end{center}%
+   \vskip 20pt
    \XDU@font@zihao{-4}%
    \hspace*{2em}\setlength{\parindent}{2\ccwd}\XDU@value@stat@statement\setlength{\parindent}{0pt}%独创性声明内容
-  \vskip 20pt%
+  \vskip 40pt%
    \hspace*{2em}\XDU@lable@stat@auther\hspace* {2em}%学位论文作者签名字样 
     \hfill \XDU@lable@stat@date\hspace*{1em} %签字日期字样
-  \vskip \stretch{6}%
+  \vskip 100pt%
    \begin{center}%
      \bfseries\XDU@font@zihao{-2}%
      \XDU@lable@stat@copyright%学位论文版权使用授权书字样
    \end{center}%
+   \vskip 40pt%
    \XDU@font@zihao{-4}%
    \hspace*{2em}\setlength{\parindent}{2\ccwd}\XDU@value@stat@copyright\setlength{\parindent}{0pt}%学位论文版权使用授权书内容
-  \vskip 20pt%
+  \vskip 60pt%
    \normalfont\XDU@font@st\XDU@font@zihao{-4}%
-   \hspace*{2em}\XDU@lable@stat@auther\hspace*{1em}%
+   \hspace*{2em}\XDU@lable@stat@auther\hspace*{1em}%%学位论文作者签名字样 
     \hfill \XDU@lable@stat@advisor\hspace*{8em}%
   \vskip 20pt%
    \hspace*{2em}\XDU@lable@stat@date\hspace*{1em}%
@@ -596,19 +679,30 @@ By \\%
     %%\renewcommand{\captionlabeldelim}{\ ~}%去冒号
     \DeclareCaptionLabelSeparator{twospace}{\ ~}
     \captionsetup{labelsep=twospace} 
-    \renewcommand{\captionfont}{\XDU@font@st\XDU@font@zihao{5}}
+    \renewcommand{\captionfont}{\XDU@font@st\XDU@font@zihao{5}\linespread{1.25}\selectfont}
 
 %% list of figures 图清单
 \ctexset { listfigurename={\XDU@label@listoffigures } }
 \DeclareRobustCommand{\XDU@listoffigures}
   {\XDU@toc@add{\XDU@toc@listoffigures}%
-    \listoffigures}
+  % \listoffigures
+    {%
+    \let\oldnumberline\numberline%
+    \renewcommand{\numberline}{\figurename~\oldnumberline}%
+    \listoffigures%
+    }
+}
 
 %% list of tables 表清单
 \ctexset { listtablename={\XDU@label@listoftables } } 
 \DeclareRobustCommand{\XDU@listoftables}
   {\XDU@toc@add{\XDU@toc@listoftables}%
-    \listoftables}
+    {%
+    \let\oldnumberline\numberline%
+    \renewcommand{\numberline}{\tablename~\oldnumberline}%
+    \listoftables%
+    }   
+    }
 
 %取消图片索引和表格索引中不同章节的间距
 \newcommand*{\noaddvspace}{\renewcommand*{\addvspace}[1]{}}
@@ -654,7 +748,9 @@ By \\%
 %% content
 \ctexset { contentsname={\XDU@label@content } }
 \DeclareRobustCommand{\XDU@tableofcontents}
-  {\tableofcontents}
+  {
+  \addcontentsline{toc}{chapter}{目录}  
+  \tableofcontents}
 %\renewcommand{\cftdotsep}{0.3pt}
 %\newcommand\mydot[1]{\scalebox{#1}{.}}
 %\renewcommand\cftdot{\mydot{1}} % change the size of dots
